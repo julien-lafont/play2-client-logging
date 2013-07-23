@@ -28,3 +28,8 @@ Hackday S02E06
 * Plugger à minima sur les logs client-side, au mieux sur les logs back&client sides
 * Suivre les erreurs par utilisateur
 * Filtrer, grouper, rechercher des erreurs
+
+## Réfs
+* http://stacktracejs.com/
+* http://stacktracejs.com/ ($)
+* http://errorception.com/ ($)
