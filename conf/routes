@@ -4,6 +4,13 @@
 
 # Home page
 GET        /                    controllers.Application.index
+GET        /page1               controllers.Application.p1
+GET        /page2               controllers.Application.p2
+GET        /page3               controllers.Application.p3
+GET        /page4               controllers.Application.p4
+GET        /page5               controllers.Application.p5
+
+
 
 ->         /logs                clientlog.Routes
 
