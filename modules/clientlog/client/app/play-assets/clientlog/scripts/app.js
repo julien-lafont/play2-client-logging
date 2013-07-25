@@ -4,7 +4,7 @@ angular.module('app', ['app.controllers', 'app.directives'])
 .config(function ($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'assets/views/main.html',
+      templateUrl: 'logs/assets/views/main.html',
       controller: 'MainCtrl'
     })
     .otherwise({

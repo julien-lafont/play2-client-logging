@@ -92,13 +92,13 @@ module.exports = function(grunt) {
       server: {
         options: {
           paths: [
-            '<%= yeoman.app %>/less/imports',
+            '<%= yeoman.app %>/less/clientlog/imports',
             '<%= yeoman.app %>/bower_components/bootstrap/less'
           ]
         },
-        files: [{
-          src: '<%= yeoman.app %>/less/main.less',
-          dest: '.tmp/play-assets/styles/main.css'
+        files: [ {
+          src: '<%= yeoman.app %>/less/clientlog/main.less',
+          dest: '.tmp/play-assets/styles/clientlog/main.css'
         }, {
           src: '<%= yeoman.app %>/bower_components/bootstrap/less/bootstrap.less',
           dest: '.tmp/bower_components/bootstrap/styles/bootstrap.css'
@@ -113,12 +113,12 @@ module.exports = function(grunt) {
           src: '**/*.{css,js}',
           dest: '<%= yeoman.app %>/play-assets/compiled'
         },
-        {
-          expand: true,
-          cwd: '.tmp/bower_components',
-          src: '**/*.{css,js}',
-          dest: '<%= yeoman.app %>/play-assets/bower_components'
-        }]
+          {
+            expand: true,
+            cwd: '.tmp/bower_components',
+            src: '**/*.{css,js}',
+            dest: '<%= yeoman.app %>/play-assets/bower_components'
+          }]
       },
       bower_components: {
         files: [{
