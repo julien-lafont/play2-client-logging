@@ -89,7 +89,7 @@ function Logger(_options) {
 
   var pushError = function(error) {
     var hash = hashObject(error);
-    if (!options.firstErrorOnly || (options.firstErrorOnly && OnlyhashHistory.indexOf(hash) < 0)) {
+    if (!options.firstErrorOnly || (options.firstErrorOnly && hashHistory.indexOf(hash) < 0)) {
       console.log(error);
       logBuffer.push(error);
       hashHistory.push(hash);
