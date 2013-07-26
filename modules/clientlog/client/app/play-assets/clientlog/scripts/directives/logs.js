@@ -27,6 +27,7 @@ angular.module('app.directives')
       scope.loadPrevious = function() {
         $http.get('/logs/pullAll')
           .success(function(data) {
+            scope.$broadcast("resetErrorGauge");
             scope.logs = []
             for(i in data) data[i].count = 1
             scope.logs.push(data)
@@ -39,6 +40,9 @@ angular.module('app.directives')
       scope.onMess = function(e) {
         var line = JSON.parse(e.data)
         line.count = 1
+        if(line.level=='error') {
+          scope.$broadcast("updateErrorGauge");
+        }
         scope.$apply(function() { scope.logs.unshift(line)} )
       }
       scope.source.onmessage = scope.onMess
