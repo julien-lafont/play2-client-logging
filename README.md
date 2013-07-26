@@ -1,7 +1,4 @@
-play2-client-logging
-====================
-
-Hackday S02E06
+Hackday S02E06 @ Zenexity
 
 ## V1 : Error catcher
 
@@ -20,7 +17,7 @@ Hackday S02E06
 * Parser les erreurs **OK**
 * Stocker les logs dans un fichier indépendant (via logger.xml?) **OK**
 * Linker les erreurs au client (ip?) **OK**
-* Prévoir un niveau d'abstraction pour pouvoir stocker les logs autre part **IN PROGRESS**
+* Prévoir un niveau d'abstraction pour pouvoir stocker les logs autre part **OK**
 
 ## V2 : Log visualizer
 
@@ -31,7 +28,11 @@ Hackday S02E06
 * Tri par date, Url, message, type d'erreur **OK**
 * Grouper les erreurs similaires **OK**
 
+## Bonus
+
+* Catch des erreurs JS dans Angular (avec des super stacktraces)
+* Stats sur le taux d'erreur
+
 ## Réfs
 * http://stacktracejs.com/
-* http://stacktracejs.com/ ($)
 * http://errorception.com/ ($)
