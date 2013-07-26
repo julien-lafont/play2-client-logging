@@ -1,1 +1,18 @@
-{{item.name}} - {{item.error}}
+<div class="row log-item">
+  <div class="col-lg-1 log-level">
+    <span class="label" ng-class="getClass()">{{item.level | uppercase}}</span>
+  </div>
+  <div class="col-lg-1 log-level">
+    {{item.date}}
+  </div>
+  <div class="col-lg-1 log-level">
+    {{getIdentifier()}}
+  </div>
+  <div class="col-lg-9 log-message">
+    <ul class="log-details">
+      <li> {{item.message}} </li>
+      <li> File : {{item.file}}:{{item.line}} </li>
+    </ul>
+  </div>
+</div>
+

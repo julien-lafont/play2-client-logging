@@ -1,2 +1,26 @@
 @import "variables.less";
 
+input.search {
+}
+
+div.logs-list {
+  .tbl-title {
+    text-align: center;
+    font-weight: bold;
+  }
+  ul {
+    list-style: none;
+    div.log-item {
+      margin-top: 5px;
+      div.log-level {
+        text-align: center;
+      }
+      div.log-message {
+        border-top: 1px solid rgb(221, 221, 221);
+        ul.log-details {
+          list-style: none;
+        }
+      }
+    }
+  }
+}

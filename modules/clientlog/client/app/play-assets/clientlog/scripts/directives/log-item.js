@@ -9,6 +9,14 @@ angular.module('app.directives')
       item : '='
     },
     link: function link(scope, iElement, iAttrs, controller) {
+      scope.getClass = function() {
+        if(scope.item.level == 'error') return 'label-danger'
+        if(scope.item.level == 'info') return 'label-info'
+      }
+      scope.getIdentifier = function() {
+        if(scope.item.login != '') return scope.item.login
+        return scope.item.ip
+      }
     }
   }
 }]);
