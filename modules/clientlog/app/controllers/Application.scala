@@ -26,7 +26,7 @@ object Application extends Controller {
 
   def pushLog = Action(parse.json) { implicit request =>
     request.body.as[JsArray].value.foreach { error =>
-      LiveLogger.error(error)
+      LiveLogger("client").error(error)
     }
     Created
   }
