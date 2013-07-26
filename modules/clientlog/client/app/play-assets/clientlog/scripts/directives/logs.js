@@ -12,6 +12,7 @@ angular.module('app.directives')
         identifier: "",
         dateFrom: "",
         dateTo: "",
+        unique: false,
         level : {
           error: true,
           info: true
@@ -89,6 +90,24 @@ angular.module('app.directives')
         if(found > 3) out.push(input[i])
       }
       match = false
+    }
+    if(search.unique) {
+      var res = []
+      for(var i=0;i<out.length;i++) {
+        var cur = out[i]
+        var duplicate = false
+        for(var j = i+1; j< out.length; j++) {
+          var aim = out[j]
+          if(cur.message == aim.message &&
+              cur.url == aim.url &&
+              (cur.ip == aim.ip || cur.login == aim.login) &&
+              cur.level == aim.level) {
+                duplicate = true
+              }
+        }
+        if(!duplicate) res.push(cur)
+      }
+      out = res
     }
     return out
   }

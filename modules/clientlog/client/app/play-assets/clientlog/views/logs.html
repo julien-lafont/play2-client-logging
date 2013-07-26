@@ -8,6 +8,7 @@
       <input type="text" class="search input" ng-class="search.dateToState" ng-model="search.identifier" placeholder="Search login/IP ..." />
       <input type="text" class="search input" ng-class="search.dateFromState" ng-model="search.dateFrom" placeholder="Date from DD/MM/YY HH:MM" date-f />
       <input type="text" class="search input" ng-model="search.dateTo" placeholder="Date to DD/MM/YY HH:MM" date-f />
+      <label for="unique"><input name="unique" id="unique" type="checkbox" class="" ng-model="search.unique" />Unique</label>
       <label for="type-error"><input name="type-error" id="type-error" type="checkbox" class="" ng-model="search.level.error" />Errors</label>
       <label for="type-info"><input name="type-info" id="type-info" type="checkbox" class="" ng-model="search.level.info" />Info</label>
     </form>
