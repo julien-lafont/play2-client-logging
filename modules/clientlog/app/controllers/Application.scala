@@ -12,23 +12,19 @@ import utils._
 
 object Application extends Controller {
 
-  val ( output, channel ) = Concurrent.broadcast[JsValue]
-
-  def index = Action {
-    Ok(views.html.clientlog.index(current))
-  }
+  val (output, channel) = Concurrent.broadcast[JsValue]
 
   def live = Action {
     Ok.feed(
-    output &>
-        EventSource[JsValue]() ><>
-    Enumeratee.map(_.getBytes("UTF-8"))
-      ).as("text/event-stream")
+      output &> EventSource[JsValue]() ><> Enumeratee.map(_.getBytes("UTF-8"))
+    ).as("text/event-stream")
   }
 
-  def push = Action {
-    LiveLogger.error(Json.obj( "error" -> "nnnn", "name" -> "toto" ))
-    Ok( "Pushed")
+  def pushLog = Action(parse.json) { request =>
+    request.body.as[JsArray].value.foreach { error =>
+      LiveLogger.error(error)
+    }
+    Created
   }
 
 }

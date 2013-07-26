@@ -1,7 +1,7 @@
 function Logger(_options) {
 
   var defaults = {
-    "url": "/logs/save",
+    "url": "/logs/log",
     "interval": 10
   }
 
