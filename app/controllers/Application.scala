@@ -4,8 +4,13 @@ import play.api._
 import play.api.mvc._
 
 object Application extends Controller {
-  
+
+  val loggerServer = Logger
+  val loggerClient = Logger("client")
+
   def index = Action {
+    loggerServer.error("server")
+    loggerClient.error("client")
     Ok(views.html.index())
   }
 
