@@ -8,6 +8,7 @@ import play.api.libs._
 import play.api.libs.iteratee._
 import play.api.libs.json._
 import scala.language.reflectiveCalls
+import utils._
 
 object Application extends Controller {
 
@@ -26,7 +27,7 @@ object Application extends Controller {
   }
 
   def push = Action {
-    channel.push( Json.obj( "error" -> "titi", "name" -> "toto" ))
+    LiveLogger.error(Json.obj( "error" -> "nnnn", "name" -> "toto" ))
     Ok( "Pushed")
   }
 
