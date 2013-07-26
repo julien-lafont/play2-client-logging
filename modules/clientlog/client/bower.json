@@ -7,7 +7,8 @@
     "es5-shim": "~2.0.8",
     "bootstrap": "https://github.com/twitter/bootstrap/archive/3.0.0-wip.zip",
     "jquery": "~2.0.3",
-    "moment": "~2.1.0"
+    "moment": "~2.1.0",
+    "d3": "~3.2.7"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.7",
