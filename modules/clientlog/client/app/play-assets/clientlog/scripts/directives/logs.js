@@ -64,30 +64,25 @@ angular.module('app.directives')
           }
         }
 
-        if(search.dateFrom != '') {
-          var dateFrom = moment(search.dateFrom, 'DD/MM/YY HH:mm:ss')
-
-          if(dateFrom.isValid()) {
-            var lDate = moment(input[i].date, 'YYYY-MM-DD')
-            if(dateFrom.isBefore(lDate))
-              found++
-          }
-        } else {
-          found++
-        }
-        if(search.dateTo != '') {
-          var dateTo = moment(search.dateTo, 'DD/MM/YY HH:mm:ss')
-
-          if(typeof dateTo != 'undefined' && dateTo.isValid()) {
-            var lDate = moment(input[i].date, 'YYYY-MM-DD')
-            if(dateTo.isAfter(lDate))
-              found++
-          }
+        var dateFrom = moment(search.dateFrom, 'DD/MM/YY HH:mm:ss')
+        if(search.dateFrom != '' && typeof dateFrom != 'undefined' && dateFrom.isValid()) {
+          var lDate = moment(input[i].date, 'YYYY-MM-DDTHH:mm:ss')
+          if(dateFrom.isBefore(lDate))
+            found++
         } else {
           found++
         }
 
-        if(found > 3) out.push(input[i])
+        var dateTo = moment(search.dateTo, 'DD/MM/YY HH:mm:ss')
+        if(search.dateTo != '' && typeof dateTo != 'undefined' && dateTo.isValid()) {
+          var lDate = moment(input[i].date, 'YYYY-MM-DDTHH:mm:ss')
+          if(dateTo.isAfter(lDate))
+            found++
+        } else {
+          found++
+        }
+
+        if(found > 4) out.push(input[i])
       }
       match = false
     }
@@ -110,6 +105,10 @@ angular.module('app.directives')
       out = res
     }
     return out
+  }
+}).filter('displayDate', function() {
+  return function(input) {
+    return moment(input, 'YYYY-MM-DDTHH:mm:ss').format('DD/MM/YY HH:mm:ss')
   }
 });
 
