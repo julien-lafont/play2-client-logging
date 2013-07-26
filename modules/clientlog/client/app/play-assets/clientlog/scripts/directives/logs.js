@@ -24,18 +24,16 @@ angular.module('app.directives')
         scope.source = new EventSource("http://localhost:9000/logs/live");
       }
 
-      scope.loadPrevious = function() {
-        $http.get('/logs/pullAll')
-          .success(function(data) {
-            scope.$broadcast("resetErrorGauge");
-            scope.logs = []
-            for(i in data) data[i].count = 1
-            scope.logs.push(data)
-          })
-          .error(function(err) {
+      $http.get('/logs/pullAll')
+        .success(function(data) {
+          scope.$broadcast("resetErrorGauge");
+          scope.logs = []
+          for(i in data) data[i].count = 1
+          scope.logs.push(data)
+        })
+        .error(function(err) {
 
-          })
-      }
+        })
 
       scope.onMess = function(e) {
         var line = JSON.parse(e.data)

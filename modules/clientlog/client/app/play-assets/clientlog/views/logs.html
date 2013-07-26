@@ -1,10 +1,7 @@
 <div class="logs col-lg-12">
-  <h1>Ca marche chez moi!</h1>
   <div class="panel col-lg-12">
+    <h1 class="centered">Ca marche chez moi!</h1>
     <div class="row">
-      <div class="col-lg-2">
-        <button type="button" class="btn btn-primary" ng-click="loadPrevious()">Load previous</button>
-      </div>
       <div class=" col-lg-10">
         <div gauge></div>
       </div>
@@ -14,11 +11,21 @@
     <form>
       <div class="row">
         <div class="col-lg-1"></div>
-        <input type="text" class="col-lg-2" ng-model="search.text" placeholder="Search query ..." />
-        <input type="text" class="col-lg-2" ng-model="search.url" placeholder="Search url..." />
-        <input type="text" class="col-lg-2" ng-class="search.dateToState" ng-model="search.identifier" placeholder="Search login/IP ..." />
-        <input type="text" class="col-lg-2" ng-class="search.dateFromState" ng-model="search.dateFrom" placeholder="Date from DD/MM/YY HH:MM" date-f />
-        <input type="text" class="col-lg-2" ng-model="search.dateTo" placeholder="Date to DD/MM/YY HH:MM" date-f />
+        <label class="col-lg-2" for="search.text">Message
+          <input type="text" id="search.text" ng-model="search.text" placeholder="Search query ..." />
+        </label>
+        <label class="col-lg-2" for="search.url">Url
+          <input type="text" id="search.url" ng-model="search.url" placeholder="Search url..." />
+        </label>
+        <label class="col-lg-2" for="search.identifier">Message
+          <input type="text" id="search.identifier" ng-model="search.identifier" placeholder="Search login/IP ..." />
+        </label>
+        <label class="col-lg-2" for="search.dateFrom">Date from
+          <input type="text" id="dateFrom" ng-class="search.dateFromState" ng-model="search.dateFrom" placeholder="Date from DD/MM/YY HH:MM" date-f />
+        </label>
+        <label class="col-lg-2" for="search.dateTo">Date to
+          <input type="text" id="dateTo" ng-class="search.dateToState" ng-model="search.dateTo" placeholder="Date to DD/MM/YY HH:MM" date-f />
+        </label>
       </div>
       <br />
       <div class="row">
