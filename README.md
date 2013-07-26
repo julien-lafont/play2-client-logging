@@ -24,10 +24,12 @@ Hackday S02E06
 
 ## V2 : Log visualizer
 
-* Real time log visualizer
+* Real time log visualizer **OK**
 * Plugger à minima sur les logs client-side, au mieux sur les logs back&client sides **OK**
-* Suivre les erreurs par utilisateur
-* Filtrer, grouper, rechercher des erreurs **IN PROGRESS**
+* Suivre les erreurs par utilisateur **OK par login ou IP**
+* Filtrer, grouper, rechercher des erreurs **OK**
+* Tri par date, Url, message, type d'erreur **OK**
+* Grouper les erreurs similaires **OK**
 
 ## Réfs
 * http://stacktracejs.com/
