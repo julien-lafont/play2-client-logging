@@ -1,8 +1,21 @@
+@(url: String, enabled: Boolean, interval: Int, firstErrorOnly: Boolean)
+
+var logger = new Logger({
+  interval: @interval,
+  firstErrorOnly: @firstErrorOnly,
+  url: "@url"
+});
+
+@if(enabled) {
+  logger.start();
+}
+
 function Logger(_options) {
 
   var defaults = {
     "url": "/logs/log",
-    "interval": 10
+    "interval": 10,
+    "firstErrorOnly": true
   }
 
   var options = $.extend(defaults, _options || {});
@@ -28,9 +41,9 @@ function Logger(_options) {
 
   /**
    * Handler which receive all errors
-   * @param message
-   * @param url
-   * @param line
+   * @@param message
+   * @@param url
+   * @@param line
    */
   window.onerror = function(message, url, line) {
     var error = {
@@ -76,7 +89,7 @@ function Logger(_options) {
 
   var pushError = function(error) {
     var hash = hashObject(error);
-    if (hashHistory.indexOf(hash) < 0) {
+    if (!options.firstErrorOnly || (options.firstErrorOnly && OnlyhashHistory.indexOf(hash) < 0)) {
       console.log(error);
       logBuffer.push(error);
       hashHistory.push(hash);
@@ -99,8 +112,3 @@ function Logger(_options) {
   };
 
 };
-
-var logger = new Logger({
-  interval: 1
-});
-logger.start();
