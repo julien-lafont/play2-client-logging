@@ -14,7 +14,6 @@
     <link rel="shortcut icon" type="image/png" href="@controllers.clientlog.routes.Assets.at("images/favicon.png")">
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="@controllers.clientlog.routes.Assets.at("bower_components/bootstrap/styles/bootstrap.css")">
-    <link rel="stylesheet" href="@controllers.clientlog.routes.Assets.at("clientlog/fonts/iconic/font/iconic stroke/iconic_stroke.css")">
     <link rel="stylesheet" href="@controllers.clientlog.routes.Assets.at("compiled/styles/clientlog/main.css")">
     <!-- endbuild -->
 </head>
@@ -34,5 +33,20 @@
       <!-- livereload script -->
       <script type="text/javascript" src="http://localhost:35729/livereload.js?snipver=1"></script>
     }
+
+    <script type="text/javascript" >
+      $(function() {
+        if(!!window.EventSource) {
+          var source = new EventSource("/live");
+          source.onmessage =  function(e) {
+            var msg = JSON.parse(e.data);
+            $("#messages").append("<li>" + JSON.stringify( msg ) + "</li>")
+          };
+        }
+      });
+    </script>
+
+    <ul id="messages">
+    </ul>
   </body>
 </html>

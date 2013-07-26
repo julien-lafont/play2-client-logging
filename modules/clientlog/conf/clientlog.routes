@@ -4,5 +4,7 @@
 
 GET     /                           controllers.clientlog.Application.index
 
+GET     /push                       controllers.clientlog.Application.push
+GET     /live                       controllers.clientlog.Application.live
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.clientlog.Assets.at(path="/public", file)
