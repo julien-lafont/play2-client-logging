@@ -8,8 +8,10 @@ angular.module('app.directives')
     link: function link(scope, iElement, iAttrs, controller) {
       scope.search = {
         text: "",
-        file: "",
+        url: "",
         identifier: "",
+        dateFrom: "",
+        dateTo: "",
         level : {
           error: true,
           info: true
@@ -27,25 +29,6 @@ angular.module('app.directives')
         scope.$apply(function() { scope.logs.unshift(line)} )
       }
       scope.source.onmessage = scope.onMess
-
-      for(var i = 0;i<100;i++)
-        if(i%7>2) scope.logs.push({
-          level:'error',
-          date: '03/98/56 14:45',
-          file: 'index.js',
-          line: '45',
-          login: 'jean.dupont',
-          ip: '127.0.0.1',
-          message:'hihihihihihih',
-          class:'label-danger'
-        })
-        else scope.logs.push({level:'info',
-          date: '01/01/13 14:45',
-          file: 'main.html',
-          line: '1',
-          login: '',
-          ip: '192.67.01.23',
-          message:'hihihihihihih', class:'label-info'})
     }
   }
 }]).filter('filterLogs', function() {
@@ -65,25 +48,73 @@ angular.module('app.directives')
           }
         }
 
-        var file = search.file.split(' ')
-        for(var f in file) {
-          if(input[i].file.indexOf(file[f]) != -1) {
+        var url = search.url.split(' ')
+        for(var f in url) {
+          if(input[i].url.indexOf(url[f]) != -1) {
             found++
           }
         }
 
         var idt = search.identifier.split(' ')
         for(var id in idt) {
-          var val = (input[i].login != '') ? input[i].login : input[i].ip
+          var val = (input[i].ip != '') ? input[i].ip : input[i].login
           if(val.indexOf(idt[id]) != -1) {
             found++
           }
         }
 
-        if(found > 2) out.push(input[i])
+        if(search.dateFrom != '') {
+          var dateFrom = moment(search.dateFrom, 'DD/MM/YY HH:mm:ss')
+
+          if(dateFrom.isValid()) {
+            var lDate = moment(input[i].date, 'YYYY-MM-DD')
+            if(dateFrom.isBefore(lDate))
+              found++
+          }
+        } else {
+          found++
+        }
+        if(search.dateTo != '') {
+          var dateTo = moment(search.dateTo, 'DD/MM/YY HH:mm:ss')
+
+          if(typeof dateTo != 'undefined' && dateTo.isValid()) {
+            var lDate = moment(input[i].date, 'YYYY-MM-DD')
+            if(dateTo.isAfter(lDate))
+              found++
+          }
+        } else {
+          found++
+        }
+
+        if(found > 3) out.push(input[i])
       }
       match = false
     }
     return out
   }
 });
+
+
+angular.module('app.directives')
+.directive('dateF', [function factory() {
+  return {
+    require: 'ngModel',
+    link: function(scope, elm, attrs, ctrl) {
+      ctrl.$parsers.unshift(function(viewValue) {
+        var dd = moment(viewValue, 'DD/MM/YY HH:mm:ss')
+        if(dd != null && dd.isValid()) {
+          ctrl.$setValidity('dateF', true);
+          for(var i =0; i<elm.length;i++) {
+            var cl = elm[i].className
+            elm[i].className = elm[i].className.replace(/invalid/g, '')
+          }
+          return viewValue
+        } else {
+          for(var i in elm)
+            elm[i].className = elm[i].className+' invalid'
+          return undefined;
+        }
+      });
+    }
+  };
+}]);

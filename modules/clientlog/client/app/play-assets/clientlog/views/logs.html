@@ -4,8 +4,10 @@
 
     <form>
       <input type="text" class="search input" ng-model="search.text" placeholder="Search query ..." />
-      <input type="text" class="search input" ng-model="search.file" placeholder="Search file..." />
-      <input type="text" class="search input" ng-model="search.identifier" placeholder="Search login/IP ..." />
+      <input type="text" class="search input" ng-model="search.url" placeholder="Search url..." />
+      <input type="text" class="search input" ng-class="search.dateToState" ng-model="search.identifier" placeholder="Search login/IP ..." />
+      <input type="text" class="search input" ng-class="search.dateFromState" ng-model="search.dateFrom" placeholder="Date from DD/MM/YY HH:MM" date-f />
+      <input type="text" class="search input" ng-model="search.dateTo" placeholder="Date to DD/MM/YY HH:MM" date-f />
       <label for="type-error"><input name="type-error" id="type-error" type="checkbox" class="" ng-model="search.level.error" />Errors</label>
       <label for="type-info"><input name="type-info" id="type-info" type="checkbox" class="" ng-model="search.level.info" />Info</label>
     </form>
@@ -14,6 +16,7 @@
     <div class="logs-list">
       <div class="col-lg-1 tbl-title"></div>
       <div class="col-lg-1 tbl-title">Date</div>
+      <div class="col-lg-1 tbl-title">Identifiant</div>
       <div class="col-lg-9 tbl-title">Error</div>
       <br />
       <ul>

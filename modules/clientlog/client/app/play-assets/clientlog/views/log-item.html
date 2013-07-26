@@ -3,7 +3,7 @@
     <span class="label" ng-class="getClass()">{{item.level | uppercase}}</span>
   </div>
   <div class="col-lg-1 log-level">
-    {{item.date}}
+    {{item.date | date:'dd/MM/yy hh:mm'}}
   </div>
   <div class="col-lg-1 log-level">
     {{getIdentifier()}}
@@ -11,7 +11,7 @@
   <div class="col-lg-9 log-message">
     <ul class="log-details">
       <li> {{item.message}} </li>
-      <li> File : {{item.file}}:{{item.line}} </li>
+      <li> Url : {{item.url}}:{{item.line}} </li>
     </ul>
   </div>
 </div>
