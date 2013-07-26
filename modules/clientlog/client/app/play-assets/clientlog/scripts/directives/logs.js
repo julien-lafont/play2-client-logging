@@ -125,13 +125,12 @@ angular.module('app.directives')
         if(dd != null && dd.isValid()) {
           ctrl.$setValidity('dateF', true);
           for(var i =0; i<elm.length;i++) {
-            var cl = elm[i].className
-            elm[i].className = elm[i].className.replace(/invalid/g, '')
+            elm[i].className = elm[i].className.replace(/has-error/g, '')
           }
           return viewValue
         } else {
           for(var i in elm)
-            elm[i].className = elm[i].className+' invalid'
+            elm[i].className = elm[i].className+' has-error'
           return undefined;
         }
       });
