@@ -35,6 +35,9 @@ object ApplicationBuild extends Build {
   ).aggregate(clientlog).dependsOn(clientlog)
 
   lazy val clientlog = play.Project("clientlog", BuildSettings.buildVersion, path = file("modules/clientlog"), settings = BuildSettings.buildSettings).settings(
+    libraryDependencies ++= Seq (
+      "org.reactivemongo" %% "play2-reactivemongo" % "0.9"
+    )
   )
 
 }
