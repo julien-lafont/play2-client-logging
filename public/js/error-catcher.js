@@ -32,11 +32,11 @@ function Logger(_options) {
    * @param url
    * @param line
    */
-  window.onerror = function(message, file, line) {
+  window.onerror = function(message, url, line) {
     var error = {
       "useragent": navigator.userAgent,
       "message": message,
-      "file": file,
+      "url": url,
       "line": line,
       "level": "error"
     };
@@ -67,6 +67,7 @@ function Logger(_options) {
     var error = {
       "level": level,
       "message": message,
+      "url": document.location.href,
       "stack": (ex !== undefined && ex.stack !== undefined) ? ex.stack : null,
       "useragent": navigator.userAgent
     };
