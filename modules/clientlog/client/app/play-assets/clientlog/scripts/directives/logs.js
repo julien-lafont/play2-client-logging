@@ -27,6 +27,7 @@ angular.module('app.directives')
       scope.loadPrevious = function() {
         $http.get('/logs/pullAll')
           .success(function(data) {
+            scope.logs = []
             scope.logs.push(data)
           })
           .error(function(err) {
