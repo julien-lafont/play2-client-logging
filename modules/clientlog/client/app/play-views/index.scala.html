@@ -14,8 +14,8 @@
     <link rel="shortcut icon" type="image/png" href="@controllers.clientlog.routes.Assets.at("images/favicon.png")">
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="@controllers.clientlog.routes.Assets.at("bower_components/bootstrap/styles/bootstrap.css")">
-    <link rel="stylesheet" href="@controllers.clientlog.routes.Assets.at("fonts/iconic/font/iconic stroke/iconic_stroke.css")">
-    <link rel="stylesheet" href="@controllers.clientlog.routes.Assets.at("compiled/styles/main.css")">
+    <link rel="stylesheet" href="@controllers.clientlog.routes.Assets.at("clientlog/fonts/iconic/font/iconic stroke/iconic_stroke.css")">
+    <link rel="stylesheet" href="@controllers.clientlog.routes.Assets.at("compiled/styles/clientlog/main.css")">
     <!-- endbuild -->
 </head>
   <body ng-app="app">
@@ -25,10 +25,10 @@
     <script src="@controllers.clientlog.routes.Assets.at("bower_components/angular/angular.js")"></script>
     <script src="@controllers.clientlog.routes.Assets.at("bower_components/jquery/jquery.min.js")"></script>
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="@controllers.clientlog.routes.Assets.at("scripts/app.js")"></script>
-    <script src="@controllers.clientlog.routes.Assets.at("scripts/controllers/controllers.js")"></script>
-    <script src="@controllers.clientlog.routes.Assets.at("scripts/controllers/main.js")"></script>
-    <script src="@controllers.clientlog.routes.Assets.at("scripts/directives/directives.js")"></script>
+    <script src="@controllers.clientlog.routes.Assets.at("clientlog/scripts/app.js")"></script>
+    <script src="@controllers.clientlog.routes.Assets.at("clientlog/scripts/controllers/controllers.js")"></script>
+    <script src="@controllers.clientlog.routes.Assets.at("clientlog/scripts/controllers/main.js")"></script>
+    <script src="@controllers.clientlog.routes.Assets.at("clientlog/scripts/directives/directives.js")"></script>
     <!-- endbuild -->
     @if(app.mode == play.api.Mode.Dev) {
       <!-- livereload script -->

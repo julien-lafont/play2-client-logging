@@ -33,7 +33,7 @@ module.exports = function(grunt) {
         livereload: LIVERELOAD_PORT
       },
       less: {
-        files: '<%= yeoman.app %>/less/**/*.less',
+        files: '<%= yeoman.app %>/less/*.less',
         tasks: ['less', 'copy:tmp']
       },
       bower_components: {
@@ -92,12 +92,12 @@ module.exports = function(grunt) {
       server: {
         options: {
           paths: [
-            '<%= yeoman.app %>/less/clientlog/imports',
+            '<%= yeoman.app %>/less/imports',
             '<%= yeoman.app %>/bower_components/bootstrap/less'
           ]
         },
         files: [ {
-          src: '<%= yeoman.app %>/less/clientlog/main.less',
+          src: '<%= yeoman.app %>/less/main.less',
           dest: '.tmp/play-assets/styles/clientlog/main.css'
         }, {
           src: '<%= yeoman.app %>/bower_components/bootstrap/less/bootstrap.less',
