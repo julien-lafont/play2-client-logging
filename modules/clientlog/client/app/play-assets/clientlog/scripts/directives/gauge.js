@@ -303,7 +303,6 @@ angular.module('app.directives')
       {
         var value = values[name] + 1;
         values[name] = value;
-        console.log(value + name + values[name])
         gauges[name].redraw(value, name);
       }
 
