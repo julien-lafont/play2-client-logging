@@ -1,5 +1,5 @@
 <div class="logs col-lg-12">
-  <h1>logs de la mort qui tue</h1>
+  <h1>Ca marche chez moi!</h1>
   <div class="panel col-lg-12">
     <button type="button" class="btn btn-primary" ng-click="loadPrevious()">Load previous</button>
     <hr />
@@ -30,10 +30,12 @@
     <hr />
 
     <div class="logs-list">
-      <div class="col-lg-1 tbl-title"></div>
-      <div class="col-lg-1 tbl-title">Date</div>
-      <div class="col-lg-1 tbl-title">Identifiant</div>
-      <div class="col-lg-9 tbl-title">Error</div>
+      <div class="row">
+        <div class="col-lg-1 tbl-title"></div>
+        <div class="col-lg-1 tbl-title">Date</div>
+        <div class="col-lg-1 tbl-title">Identifiant</div>
+        <div class="col-lg-9 tbl-title">Error</div>
+      </div>
       <br />
       <ul>
         <li ng-repeat="log in logs | filterLogs:search">

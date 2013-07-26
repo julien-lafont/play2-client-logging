@@ -18,6 +18,7 @@ angular.module('app.directives')
       }
       scope.getIdentifier = function() {
         if(scope.item.login != '') return scope.item.login
+        if(scope.item.ip == '0:0:0:0:0:0:0:1%0') return 'localhost'
         return scope.item.ip
       }
       scope.line = function() {
