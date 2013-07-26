@@ -26,7 +26,8 @@ object AccessLogFilter extends Filter {
       )
 
     if (!(request.path.length >= 7 && request.path.substring(0,7) == "/assets") &&
-      !(request.path.length >= 5 && request.path.substring(0,5) == "/logs")) {
+      !(request.path.length >= 5 && request.path.substring(0,5) == "/logs") &&
+      !(request.path.length >= 12 && request.path.substring(0,12) == "/favicon.ico") ) {
 
       LiveLogger("access").trace(accessJson)
     }
