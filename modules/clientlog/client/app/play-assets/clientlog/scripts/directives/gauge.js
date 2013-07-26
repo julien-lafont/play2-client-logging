@@ -8,8 +8,7 @@ angular.module('app.directives')
     scope : {
     },
     link: function link(scope, iElement, iAttrs, controller) {
-
-      scope.errorValue = 0;
+      var values = [];
       var Gauge = function(placeholderName, configuration)
         {
           this.placeholderName = placeholderName;
@@ -221,9 +220,8 @@ angular.module('app.directives')
                   .attr("transform", function() { return "translate(" + self.config.cx + ", " + self.config.cy + ") rotate(270)" });
           }
 
-          this.redraw = function(value, transitionDuration)
+          this.redraw = function(value, transitionDuration, name)
           {
-            scope.errorValue = value;
             var pointerContainer = this.body.select(".pointerContainer");
 
             pointerContainer.selectAll("text").text(Math.round(value));
@@ -297,12 +295,23 @@ angular.module('app.directives')
       function createGauges()
       {
         createGauge("error", "Error");
+        createGauge("trace", "Trace");
+        createGauge("info", "Info");
       }
 
-      function updateGauges()
+      function updateGauges(name)
       {
-        var value = scope.errorValue + 1;
-        gauges["error"].redraw(value);
+        var value = values[name] + 1;
+        values[name] = value;
+        console.log(value + name + values[name])
+        gauges[name].redraw(value, name);
+      }
+
+      function resetGauges(name)
+      {
+        var value = 0;
+        values[name] = value;
+        gauges[name].redraw(value, name);
       }
 
       function getRandomValue(gauge)
@@ -313,12 +322,29 @@ angular.module('app.directives')
 
       createGauges();
 
+      values['error'] = 0;
+      values['info'] = 0;
+      values['trace'] = 0;
       scope.$on('updateErrorGauge', function(event){
-        updateGauges();
+        updateGauges('error');
       });
       scope.$on('resetErrorGauge', function(event){
-        scope.errorValue = 0;
-        updateGauges();
+        values['error'] = 0;
+        resetGauges('error');
+      });
+      scope.$on('updateTraceGauge', function(event){
+        updateGauges('trace');
+      });
+      scope.$on('resetTraceGauge', function(event){
+        values['trace'] = 0;
+        resetGauges('trace');
+      });
+      scope.$on('updateInfoGauge', function(event){
+        updateGauges('info');
+      });
+      scope.$on('resetInfoGauge', function(event){
+        values['info'] = 0;
+        resetGauges('info');
       });
       //setInterval(updateGauges, 50000);
 

@@ -27,12 +27,13 @@ angular.module('app.directives')
       $http.get('/logs/pullAll')
         .success(function(data) {
           scope.$broadcast("resetErrorGauge");
+          scope.$broadcast("resetInfoGauge");
+          scope.$broadcast("resetTraceGauge");
           scope.logs = []
           for(i in data) data[i].count = 1
           scope.logs.push(data)
         })
         .error(function(err) {
-
         })
 
       scope.onMess = function(e) {
@@ -40,6 +41,12 @@ angular.module('app.directives')
         line.count = 1
         if(line.level=='error') {
           scope.$broadcast("updateErrorGauge");
+        }
+        if(line.level=='info') {
+          scope.$broadcast("updateInfoGauge");
+        }
+        if(line.level=='trace') {
+          scope.$broadcast("updateTraceGauge");
         }
         scope.$apply(function() { scope.logs.unshift(line)} )
       }
