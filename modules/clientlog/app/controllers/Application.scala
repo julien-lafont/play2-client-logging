@@ -10,9 +10,19 @@ import play.api.libs.json._
 import scala.language.reflectiveCalls
 import utils._
 
-object Application extends Controller {
+import scala.concurrent.Future
+
+// Reactive Mongo imports
+import reactivemongo.api._
+
+// Reactive Mongo plugin, including the JSON-specialized collection
+import play.modules.reactivemongo.MongoController
+import play.modules.reactivemongo.json.collection.JSONCollection
+
+object Application extends Controller with MongoController {
 
   val (output, channel) = Concurrent.broadcast[JsValue]
+
 
   def index = Action {
     Ok(views.html.clientlog.index(current))
@@ -40,6 +50,26 @@ object Application extends Controller {
       LiveLogger("client").error(error)
     }
     Created
+  }
+
+  def collectionLogs: JSONCollection = db.collection[JSONCollection]("persons")
+
+  def insert(json: JsValue) = {
+    collectionLogs.insert(json)
+  }
+
+  def pullAll() = Action {
+    val cursor: Cursor[JsObject] = collectionLogs.
+      find(Json.obj()).
+      cursor[JsObject]
+    val futureLogsList: Future[List[JsObject]] = cursor.toList
+    futureLogsList.map { logs =>
+      logs.foreach { log =>
+        println(log)
+        channel.push(log)
+      }
+    }
+    Ok
   }
 
 }

@@ -21,11 +21,13 @@ case class LiveLogger(clazz: String) {
       )))
     ).get
     controllers.clientlog.Application.channel.push( errorFormated )
+    controllers.clientlog.Application.insert( errorFormated )
     log.error(errorFormated.toString)
   }
 
   def trace(accessLog: JsValue) = {
     controllers.clientlog.Application.channel.push(accessLog)
+    controllers.clientlog.Application.insert( accessLog )
     log.trace(accessLog.toString)
   }
 }

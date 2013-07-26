@@ -8,6 +8,6 @@ GET         /script.js           controllers.clientlog.Application.script
 POST        /log                 controllers.clientlog.Application.pushLog
 
 GET         /live                controllers.clientlog.Application.live
-
+GET         /pullAll             controllers.clientlog.Application.pullAll
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file        controllers.clientlog.Assets.at(path="/public", file)
