@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('app.directives')
-.directive('logs', [function factory() {
+.directive('logs', ["$http", function factory($http) {
   return {
     restrict: 'A',
     templateUrl: 'logs/assets/clientlog/views/logs.html',
@@ -22,6 +22,16 @@ angular.module('app.directives')
       scope.logs = new Array()
       if(!!window.EventSource) {
         scope.source = new EventSource("http://localhost:9000/logs/live");
+      }
+
+      scope.loadPrevious = function() {
+        $http.get('/logs/pullAll')
+          .success(function(data) {
+            scope.logs.push(data)
+          })
+          .error(function(err) {
+
+          })
       }
 
       scope.onMess = function(e) {
