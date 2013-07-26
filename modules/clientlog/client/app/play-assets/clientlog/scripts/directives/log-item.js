@@ -33,7 +33,7 @@ angular.module('app.directives')
         return scope.item.ip
       }
       scope.line = function() {
-        if(scope.item.line != '') return ":"+scope.item.line
+        if(typeof scope.item.line != 'undefined' && scope.item.line != '') return ":"+scope.item.line
         return ""
       }
       scope.itemCount = function() {

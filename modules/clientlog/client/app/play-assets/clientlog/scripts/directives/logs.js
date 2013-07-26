@@ -51,6 +51,9 @@ angular.module('app.directives')
         scope.$apply(function() { scope.logs.unshift(line)} )
       }
       scope.source.onmessage = scope.onMess
+      scope.coucou=  function() {
+        ChuckNorris_Is_a_Loser = true
+      }
     }
   }
 }]).filter('filterLogs', function() {
