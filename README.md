@@ -1,4 +1,12 @@
-Hackday S02E06 @ Zenexity
+# Hackday S02E06 @ Zenexity
+
+> WTF! Ca marche chez moi 
+
+* Transmission intelligente des erreurs clientes au serveur
+* Agrégation multi-sources
+* Visualisation temps réel des logs
+* Tri et recherche des logs avec tracking des utilisateurs
+
 
 ## V1 : Error catcher
 
