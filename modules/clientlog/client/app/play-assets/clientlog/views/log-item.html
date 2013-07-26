@@ -10,7 +10,7 @@
   </div>
   <div class="col-lg-9 log-message">
     <ul class="log-details">
-      <li> <strong>Erreur :</strong> {{item.message}} </li>
+      <li><span class="badge">{{itemCount()}}</span><strong>Erreur :</strong> {{item.message}} </li>
       <li> <strong>Url :</strong> {{item.url}} {{line()}} </li>
       <li> <strong>User-Agent :</strong> {{item.useragent}} </li>
     </ul>

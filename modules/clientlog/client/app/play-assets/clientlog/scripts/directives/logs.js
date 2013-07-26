@@ -28,6 +28,7 @@ angular.module('app.directives')
         $http.get('/logs/pullAll')
           .success(function(data) {
             scope.logs = []
+            for(i in data) data[i].count = 1
             scope.logs.push(data)
           })
           .error(function(err) {
@@ -37,8 +38,7 @@ angular.module('app.directives')
 
       scope.onMess = function(e) {
         var line = JSON.parse(e.data)
-        if(line.level=='error') line.class="label-danger"
-        if(line.level=='info') line.class="label-info"
+        line.count = 1
         scope.$apply(function() { scope.logs.unshift(line)} )
       }
       scope.source.onmessage = scope.onMess
@@ -103,19 +103,26 @@ angular.module('app.directives')
       var res = []
       for(var i=0;i<out.length;i++) {
         var cur = out[i]
+        cur.count = 1
         var duplicate = false
-        for(var j = i+1; j< out.length; j++) {
-          var aim = out[j]
-          if(cur.message == aim.message &&
-              cur.url == aim.url &&
-              (cur.ip == aim.ip || cur.login == aim.login) &&
-              cur.level == aim.level) {
-                duplicate = true
-              }
+        if(typeof cur.duplicate == 'undefined' || !cur.duplicate) {
+          for(var j = i+1; j<out.length; j++) {
+            var aim = out[j]
+            if(cur.message == aim.message &&
+                cur.url == aim.url &&
+                (cur.ip == aim.ip || cur.login == aim.login) &&
+                cur.level == aim.level) {
+                  aim.duplicate = true
+                  cur.count++
+            }
+          }
         }
-        if(!duplicate) res.push(cur)
+        if(!cur.duplicate) res.push(cur)
       }
       out = res
+    } else {
+      for(i in out)
+        out[i].count = 1
     }
     return out
   }

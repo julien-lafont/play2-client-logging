@@ -25,6 +25,10 @@ angular.module('app.directives')
         if(scope.item.line != '') return ":"+scope.item.line
         return ""
       }
+      scope.itemCount = function() {
+        if(scope.item.count == 1) return ''
+        return scope.item.count
+      }
     }
   }
 }]);
