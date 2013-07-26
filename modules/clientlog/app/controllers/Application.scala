@@ -14,6 +14,10 @@ object Application extends Controller {
 
   val (output, channel) = Concurrent.broadcast[JsValue]
 
+  def index = Action {
+    Ok(views.html.clientlog.index(current))
+  }
+
   def live = Action {
     Ok.feed(
       output &> EventSource[JsValue]() ><> Enumeratee.map(_.getBytes("UTF-8"))
