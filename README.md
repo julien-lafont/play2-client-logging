@@ -12,7 +12,7 @@
 
 ### Client-side
 * Catcher les erreurs dans `window.onError` **OK**
-* Helper pour logger les exceptions `catch (e) { log("xxx", e); }` **UNTESTED**
+* Helper pour logger les exceptions `catch (e) { log("xxx", e); }` **OK**
 * Bufferiser les erreurs pour les poster toutes les Xs **OK**
 * Extraire une stacktrace (lorsque c'est possible) et le user-agent **OK**
 * Ne pas bufferiser 2x la même erreur **OK**
@@ -38,8 +38,8 @@
 
 ## Bonus
 
-* Catch des erreurs JS dans Angular (avec des super stacktraces)
-* Stats sur le taux d'erreur
+* Catch des erreurs JS dans Angular (avec des super stacktraces) **OK**
+* Stats sur le taux d'erreur **OK**
 
 ## Réfs
 * http://stacktracejs.com/
