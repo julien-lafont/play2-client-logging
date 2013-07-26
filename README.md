@@ -7,6 +7,7 @@
 * Visualisation temps réel des logs
 * Tri et recherche des logs avec tracking des utilisateurs
 
+<img src="http://oi39.tinypic.com/wi278j.jpg" />
 
 ## V1 : Error catcher
 
