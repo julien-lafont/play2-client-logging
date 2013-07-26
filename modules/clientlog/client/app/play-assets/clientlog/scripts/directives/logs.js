@@ -15,7 +15,8 @@ angular.module('app.directives')
         unique: false,
         level : {
           error: true,
-          info: true
+          info: true,
+          trace: true
         }
       }
       scope.logs = new Array()
@@ -39,6 +40,7 @@ angular.module('app.directives')
     for(var i in input) {
       if(input[i].level == 'error' && search.level.error == true) match = true
       else if(input[i].level == 'info' && search.level.info == true) match = true
+      else if(input[i].level == 'trace' && search.level.trace == true) match = true
 
       if(match) {
         var found = 0
