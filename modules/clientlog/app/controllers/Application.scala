@@ -24,7 +24,7 @@ object Application extends Controller {
     ).as("text/event-stream")
   }
 
-  def pushLog = Action(parse.json) { request =>
+  def pushLog = Action(parse.json) { implicit request =>
     request.body.as[JsArray].value.foreach { error =>
       LiveLogger.error(error)
     }
