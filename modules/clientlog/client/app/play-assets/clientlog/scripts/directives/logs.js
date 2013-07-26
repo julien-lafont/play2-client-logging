@@ -80,7 +80,7 @@ angular.module('app.directives')
 
         var idt = search.identifier.split(' ')
         for(var id in idt) {
-          var val = (input[i].ip != '') ? input[i].ip : input[i].login
+          var val = (input[i].login != '') ? input[i].login : input[i].ip
           if(val.indexOf(idt[id]) != -1) {
             found++
           }
@@ -149,7 +149,7 @@ angular.module('app.directives')
     link: function(scope, elm, attrs, ctrl) {
       ctrl.$parsers.unshift(function(viewValue) {
         var dd = moment(viewValue, 'DD/MM/YY HH:mm:ss')
-        if(dd != null && dd.isValid()) {
+        if(viewValue =='' || (dd != null && dd.isValid())) {
           ctrl.$setValidity('dateF', true);
           for(var i =0; i<elm.length;i++) {
             elm[i].className = elm[i].className.replace(/has-error/g, '')
