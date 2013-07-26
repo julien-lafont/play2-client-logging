@@ -39,6 +39,11 @@ object Application extends Controller with MongoController {
       .as(JAVASCRIPT)
   }
 
+  def angular(appName: String) = Action { implicit request =>
+    Ok(views.txt.clientlog.angularHandler(appName))
+      .as(JAVASCRIPT)
+  }
+
   def live = Action {
     Ok.feed(
       output &> EventSource[JsValue]() ><> Enumeratee.map(_.getBytes("UTF-8"))

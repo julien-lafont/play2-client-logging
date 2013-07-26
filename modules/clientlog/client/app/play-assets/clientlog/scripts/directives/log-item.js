@@ -9,6 +9,17 @@ angular.module('app.directives')
       item : '='
     },
     link: function link(scope, iElement, iAttrs, controller) {
+
+      scope.detail = false;
+      scope.clickable = scope.item.stack != null && scope.item.stack != '';
+      scope.classClickable = scope.clickable ? "clickable": "";
+
+      scope.toggleDetail = function() {
+        if (scope.clickable) {
+          scope.detail = !scope.detail;
+        }
+      }
+
       scope.getClass = function() {
         if(scope.item.level == 'error') return 'label-danger'
         if(scope.item.level == 'info') return 'label-info'

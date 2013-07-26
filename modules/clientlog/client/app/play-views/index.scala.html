@@ -15,6 +15,10 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="@controllers.clientlog.routes.Assets.at("clientlog/styles/bootstrap.css")">
     <link rel="stylesheet" href="@controllers.clientlog.routes.Assets.at("compiled/styles/clientlog/main.css")">
+
+    <script src="@controllers.clientlog.routes.Assets.at("bower_components/jquery/jquery.min.js")"></script>
+    <script src="@controllers.clientlog.routes.Application.script"></script>
+
     <!-- endbuild -->
 </head>
   <body ng-app="app">
@@ -22,7 +26,7 @@
     <div ng-view></div>
 
     <script src="@controllers.clientlog.routes.Assets.at("bower_components/angular/angular.js")"></script>
-    <script src="@controllers.clientlog.routes.Assets.at("bower_components/jquery/jquery.min.js")"></script>
+
     <script src="@controllers.clientlog.routes.Assets.at("bower_components/moment/moment.js")"></script>
     <script src="@controllers.clientlog.routes.Assets.at("bower_components/d3/d3.min.js")"></script>
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -33,6 +37,8 @@
     <script src="@controllers.clientlog.routes.Assets.at("clientlog/scripts/directives/logs.js")"></script>
     <script src="@controllers.clientlog.routes.Assets.at("clientlog/scripts/directives/log-item.js")"></script>
     <script src="@controllers.clientlog.routes.Assets.at("clientlog/scripts/directives/gauge.js")"></script>
+    <script src="@controllers.clientlog.routes.Application.angular("app")"></script>
+
     <!-- endbuild -->
     @if(app.mode == play.api.Mode.Dev) {
       <!-- livereload script -->

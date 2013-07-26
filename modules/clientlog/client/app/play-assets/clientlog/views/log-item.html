@@ -1,4 +1,4 @@
-<div class="row log-item">
+<div class="row log-item {{classClickable}}" ng-click="toggleDetail()">
   <div class="col-lg-1 log-level">
     <span class="label" ng-class="getClass()">{{item.level | uppercase}}</span>
   </div>
@@ -16,4 +16,9 @@
     </ul>
   </div>
 </div>
-
+<div class="row" ng-show="detail">
+  <div class="col-lg-3"></div>
+  <div class="detail col-lg-9">
+    <pre>{{item.stack}}</pre>
+  </div>
+</div>

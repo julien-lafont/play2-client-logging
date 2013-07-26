@@ -1,0 +1,7 @@
+@(app: String)
+
+angular.module('@{app}').factory('$exceptionHandler', function () {
+  return function (exception, cause) {
+    logger.error(exception.message, exception);
+  };
+});

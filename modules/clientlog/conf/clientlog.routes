@@ -2,12 +2,15 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET         /                    controllers.clientlog.Application.index
-GET         /script.js           controllers.clientlog.Application.script
+GET         /                                controllers.clientlog.Application.index
 
-POST        /log                 controllers.clientlog.Application.pushLog
+GET         /script.js                       controllers.clientlog.Application.script
+GET         /angular-handler-error.js        controllers.clientlog.Application.angular(app: String)
 
-GET         /live                controllers.clientlog.Application.live
-GET         /pullAll             controllers.clientlog.Application.pullAll
+
+POST        /log                             controllers.clientlog.Application.pushLog
+
+GET         /live                            controllers.clientlog.Application.live
+GET         /pullAll                         controllers.clientlog.Application.pullAll
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file        controllers.clientlog.Assets.at(path="/public", file)
+GET         /assets/*file                    controllers.clientlog.Assets.at(path="/public", file)
